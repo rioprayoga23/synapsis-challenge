@@ -1,16 +1,17 @@
 import Hero from "@/components/shared/Hero";
 import React from "react";
 
-const PostsPage = () => {
+const UsersPage = () => {
   return (
     <>
       <Hero
-        title="Our Posts"
+        title="Users"
         subtitle="Get the latest, hottest, and most updated information."
       />
-      <div className="container">PostsPage</div>
+
+      <div className="container">Users Page</div>
     </>
   );
 };
 
-export default PostsPage;
+export default UsersPage;

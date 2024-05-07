@@ -2,32 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --gradient: linear-gradient(to top left, #00fff0, #0083fe);
+
+    --background: 188 65% 4%;
+    --foreground: 188 10% 97.5%;
+
+    --muted: 188 50% 15%;
+    --muted-foreground: 188 10% 55%;
+
+    --popover: 188 45% 6.5%;
+    --popover-foreground: 188 10% 97.5%;
+
+    --card: 188 45% 6.5%;
+    --card-foreground: 188 10% 97.5%;
+
+    --border: 188 50% 15%;
+    --input: 188 50% 15%;
+
+    --primary: 188 100% 50%;
+    --primary-foreground: 188 10% 5%;
+
+    --secondary: 188 50% 15%;
+    --secondary-foreground: 188 10% 97.5%;
+
+    --accent: 188 50% 15%;
+    --accent-foreground: 188 10% 97.5%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 188 10% 97.5%;
+
+    --ring: 188 100% 50%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.nav {
+  @apply sticky bg-white top-0 h-16 items-center gap-4 border-b z-10 flex;
+}
+
+.nav-large {
+  @apply hidden gap-6 font-medium md:flex items-center justify-between w-full text-sm;
+}
+
+.nav-item {
+  @apply flex gap-2 md:gap-1 items-center md:py-2 md:px-3 md:rounded-full md:bg-accent md:hover:bg-accent md:hover:text-primary;
+}
+
+.sidebar {
+  @apply md:hidden w-full flex justify-between items-center container;
+}
+
+.sidebar-item {
+  @apply grid gap-5 text-lg font-medium;
+}
+
+.active {
+  @apply text-primary;
+}
+
+.hero {
+  @apply relative h-[180px] md:h-[290px] lg:h-[350px] 2xl:h-[450px];
+}
+
+.hero-overlay {
+  @apply absolute inset-0 bg-gray-800 opacity-45;
+}
+
+.hero-content {
+  @apply container relative z-10 flex flex-col h-full w-full items-center md:items-start justify-center;
+}
+
+.hero-title {
+  @apply text-white text-3xl md:text-5xl font-bold;
+}
+
+.hero-subtitle {
+  @apply text-center text-lg md:text-xl mt-2;
 }
