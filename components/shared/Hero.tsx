@@ -20,8 +20,8 @@ const Hero = ({ title, subtitle }: HeroProps) => {
       />
       <div className="hero-overlay" />
       <div className="hero-content">
-        <h1 className="hero-title">{title}</h1>
-        <h2 className="hero-subtitle">{subtitle}</h2>
+        <h1 className="heading">{title}</h1>
+        <h2 className="subHeading">{subtitle}</h2>
       </div>
     </div>
   );

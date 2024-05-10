@@ -4,8 +4,11 @@ import { navlink } from "@/constants";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Sidebar = () => {
+  const { asPath } = useRouter();
+
   return (
     <div className="sidebar">
       <Link href={"/"}>
@@ -14,15 +17,24 @@ const Sidebar = () => {
 
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="shrink-0 rounded">
-            <Menu className="h-5 w-5" />
+          <Button
+            variant="secondary"
+            size="icon"
+            className="shrink-0 rounded"
+            aria-label="button"
+          >
+            <Menu className="h-8 w-5" />
           </Button>
         </SheetTrigger>
 
         <SheetContent side="right">
           <div className="sidebar-item mt-6">
             {navlink.map((item, i) => (
-              <Link href={item.route} className="nav-item" key={i}>
+              <Link
+                href={item.route}
+                className={`nav-item ${item.route === asPath && "active"}`}
+                key={i}
+              >
                 {item.icon}
                 {item.name}
               </Link>

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -7,6 +9,11 @@ import { navlink } from "@/constants";
 
 const Navbar = () => {
   const { asPath } = useRouter();
+
+  console.log({ asPath });
+  console.log({ asPath });
+
+  // console.log(item.route === asPath);
 
   return (
     <nav className="nav">
@@ -25,11 +32,7 @@ const Navbar = () => {
           {navlink.map((item, i) => (
             <Link
               href={item.route}
-              className={`nav-item ${
-                (item.route === asPath ||
-                  (item.name === "Beranda" && asPath === "/blog")) &&
-                "active"
-              }`}
+              className={`nav-item ${item.route === asPath && "active"}`}
               key={i}
             >
               {item.icon}

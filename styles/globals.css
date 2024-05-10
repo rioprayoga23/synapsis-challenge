@@ -4,36 +4,36 @@
 
 @layer base {
   :root {
-    --gradient: linear-gradient(to top left, #00fff0, #0083fe);
+    --gradient: #00ff7f;
 
-    --background: 188 65% 4%;
-    --foreground: 188 10% 97.5%;
+    --background: 159 65% 4%;
+    --foreground: 159 10% 97.5%;
 
-    --muted: 188 50% 15%;
-    --muted-foreground: 188 10% 55%;
+    --muted: 159 50% 15%;
+    --muted-foreground: 159 10% 55%;
 
-    --popover: 188 45% 6.5%;
-    --popover-foreground: 188 10% 97.5%;
+    --popover: 159 45% 6.5%;
+    --popover-foreground: 159 10% 97.5%;
 
-    --card: 188 45% 6.5%;
-    --card-foreground: 188 10% 97.5%;
+    --card: 159 45% 6.5%;
+    --card-foreground: 159 10% 97.5%;
 
-    --border: 188 50% 15%;
-    --input: 188 50% 15%;
+    --border: 159 50% 15%;
+    --input: 159 50% 15%;
 
-    --primary: 188 100% 50%;
-    --primary-foreground: 188 10% 5%;
+    --primary: 159 100% 50%;
+    --primary-foreground: 159 10% 5%;
 
-    --secondary: 188 50% 15%;
-    --secondary-foreground: 188 10% 97.5%;
+    --secondary: 159 50% 15%;
+    --secondary-foreground: 159 10% 97.5%;
 
-    --accent: 188 50% 15%;
-    --accent-foreground: 188 10% 97.5%;
+    --accent: 159 50% 15%;
+    --accent-foreground: 159 10% 97.5%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 188 10% 97.5%;
+    --destructive-foreground: 159 10% 97.5%;
 
-    --ring: 188 100% 50%;
+    --ring: 159 100% 50%;
   }
 }
 
@@ -55,7 +55,7 @@
 }
 
 .nav-item {
-  @apply flex gap-2 md:gap-1 items-center md:py-2 md:px-3 md:rounded-full md:bg-accent md:hover:bg-accent md:hover:text-primary;
+  @apply flex gap-2 md:gap-1 items-center md:py-2 md:px-3 md:rounded-full md:bg-background md:hover:bg-background md:hover:text-primary;
 }
 
 .sidebar {
@@ -71,7 +71,7 @@
 }
 
 .hero {
-  @apply relative h-[180px] md:h-[290px] lg:h-[350px] 2xl:h-[450px];
+  @apply relative h-[280px] md:h-[290px] lg:h-[350px] 2xl:h-[450px];
 }
 
 .hero-overlay {
@@ -79,13 +79,109 @@
 }
 
 .hero-content {
-  @apply container relative z-10 flex flex-col h-full w-full items-center md:items-start justify-center;
+  @apply container relative flex flex-col h-full w-full items-center lg:items-start justify-center;
 }
 
-.hero-title {
-  @apply text-white text-3xl md:text-5xl font-bold;
+.heading {
+  @apply text-center text-white text-3xl md:text-5xl font-bold;
 }
 
-.hero-subtitle {
+.subHeading {
   @apply text-center text-lg md:text-xl mt-2;
+}
+
+.heading {
+  @apply text-center text-white text-3xl md:text-5xl font-bold;
+}
+
+.subHeading {
+  @apply text-center text-lg md:text-xl mt-2;
+}
+
+.title {
+  @apply text-center text-white text-2xl md:text-4xl font-bold;
+}
+
+.subtitle {
+  @apply text-center text-base md:text-lg mt-2;
+}
+
+.wrap-posts {
+  @apply grid sm:grid-cols-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-7;
+}
+
+.card-post {
+  @apply rounded-2xl bg-card border p-4 cursor-pointer md:hover:border-primary md:hover:shadow-2xl md:hover:shadow-secondary/90;
+}
+
+.scale-animation {
+  @apply md:hover:scale-[103%] transform transition duration-300;
+}
+
+.card-thumbnail {
+  @apply relative h-48;
+}
+
+.card-title {
+  @apply text-ellipsis line-clamp-2 mt-3 text-xl font-semibold text-foreground;
+}
+
+.card-subtitle {
+  @apply text-gray-300 text-ellipsis line-clamp-4;
+}
+
+.post-header {
+  @apply grid lg:grid-cols-3;
+}
+
+.post-header h1 {
+  @apply text-center md:text-start text-2xl md:text-4xl font-semibold mt-10;
+}
+
+.wrap-profile {
+  @apply flex justify-center md:justify-start items-center gap-2;
+}
+
+.author {
+  @apply text-primary font-semibold text-sm md:text-lg;
+}
+
+.divider {
+  @apply border-e-2 border-primary h-8 md:h-10;
+}
+
+.article {
+  @apply lg:grid grid-cols-1 lg:grid-cols-3 gap-10 pb-10;
+}
+
+.comment {
+  @apply grid lg:grid-cols-3 pb-10;
+}
+
+.comment-header {
+  @apply flex items-center gap-1 text-xl font-semibold;
+}
+
+.post-content {
+  @apply md:col-span-2;
+}
+
+.thumbnail {
+  @apply w-[100%] h-[210px] sm:h-[250px] md:h-[350px] lg:h-[450px] relative;
+}
+
+.description {
+  @apply text-gray-300 text-lg mt-6;
+}
+
+aside {
+  @apply mt-10 lg:mt-0;
+}
+
+.latest-title {
+  @apply text-3xl font-semibold;
+}
+
+.wrap-latest-post {
+  @apply flex flex-col md:flex-row lg:flex-col gap-6 md:gap-3 mt-5;
 }
