@@ -131,7 +131,7 @@
 }
 
 .card-subtitle {
-  @apply text-gray-300 text-ellipsis line-clamp-4;
+  @apply text-gray-300 text-ellipsis line-clamp-3;
 }
 
 .post-header {

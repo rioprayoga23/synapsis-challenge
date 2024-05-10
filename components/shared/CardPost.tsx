@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
-const CardPost = ({ column = false }: { column?: boolean }) => {
+const CardPost = ({ data, column = false, refCard }: CardPostProps) => {
   return (
-    <Link href={`/posts/${"a"}`}>
+    <Link href={`/posts/${"a"}`} ref={refCard}>
       <div
         className={`card card-post hover-active ${
           !column ? "scale-animation" : "lg:flex gap-2 hover:border-primary"
@@ -28,14 +27,10 @@ const CardPost = ({ column = false }: { column?: boolean }) => {
         {/* title */}
         <div>
           <h1 className={`card-title ${column && "md:!mt-0"}`}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel sunt
-            ducimus sequi harum
+            {data?.title}
           </h1>
           <p className={`card-subtitle ${column && "!line-clamp-3"}`}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id illo
-            qui, sapiente aut nobis consequatur aliquam perferendis laborum
-            blanditiis? Debitis accusamus vitae aut nobis a illum mollitia!
-            Animi, veritatis earum.
+            {data?.body}
           </p>
         </div>
       </div>

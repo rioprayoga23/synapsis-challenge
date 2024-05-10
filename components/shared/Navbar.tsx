@@ -10,11 +10,6 @@ import { navlink } from "@/constants";
 const Navbar = () => {
   const { asPath } = useRouter();
 
-  console.log({ asPath });
-  console.log({ asPath });
-
-  // console.log(item.route === asPath);
-
   return (
     <nav className="nav">
       <div className="nav-large container mx-auto">

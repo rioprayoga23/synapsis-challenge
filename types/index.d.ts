@@ -29,3 +29,16 @@ declare type FormSchema = {
   gender: string;
   status: string;
 };
+
+declare type Posts = {
+  id: number;
+  userId: number;
+  title: string;
+  body: string;
+};
+
+declare type CardPostProps = {
+  data?: Posts;
+  column?: boolean;
+  refCard?: any;
+};
