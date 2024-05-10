@@ -111,7 +111,11 @@
 }
 
 .card-post {
-  @apply rounded-2xl bg-card border p-4 cursor-pointer md:hover:border-primary md:hover:shadow-2xl md:hover:shadow-secondary/90;
+  @apply rounded-2xl border p-4 cursor-pointer;
+}
+
+.hover-active {
+  @apply md:hover:border-primary md:hover:shadow-2xl md:hover:shadow-secondary/90;
 }
 
 .scale-animation {
@@ -184,4 +188,56 @@ aside {
 
 .wrap-latest-post {
   @apply flex flex-col md:flex-row lg:flex-col gap-6 md:gap-3 mt-5;
+}
+
+.wrap-users {
+  @apply grid grid-cols-3 gap-5 xl:gap-10;
+}
+
+.list-users {
+  @apply card rounded-xl p-3 md:p-5 col-span-3 md:col-span-2 border;
+}
+
+.header-title {
+  @apply text-3xl font-semibold;
+}
+
+.card-users {
+  @apply flex flex-col items-center sm:items-start sm:flex-row gap-2 sm:gap-5 p-3 rounded-xl border hover-active bg-secondary;
+}
+
+.user-actions {
+  @apply flex gap-2;
+}
+
+.card {
+  @apply bg-card;
+}
+
+.avatar {
+  @apply rounded-full w-fit h-fit p-1 border-2 border-primary;
+}
+
+.content-users {
+  @apply flex flex-col lg:flex-row w-full justify-center sm:justify-between md:gap-3;
+}
+
+.user-actions {
+  @apply flex flex-col sm:flex-row mt-3;
+}
+
+.users-name {
+  @apply text-2xl font-semibold text-center sm:text-start text-primary;
+}
+
+.info-item {
+  @apply flex gap-2 items-center cursor-pointer hover:text-primary mt-[5px] w-fit;
+}
+
+.form-users {
+  @apply hidden md:block card border rounded-xl p-5 h-fit mt-0;
+}
+
+.btn-add {
+  @apply md:hidden rounded-[7px] gap-1;
 }

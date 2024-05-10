@@ -6,7 +6,7 @@ const CardPost = ({ column = false }: { column?: boolean }) => {
   return (
     <Link href={`/posts/${"a"}`}>
       <div
-        className={`card-post ${
+        className={`card card-post hover-active ${
           !column ? "scale-animation" : "lg:flex gap-2 hover:border-primary"
         }`}
       >
