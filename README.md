@@ -7,7 +7,6 @@
   - [Gallery](#gallery)
 - [Getting Started](#getting-started)
   - [Installation](#installation)
-  - [Usage](#usage)
 
 ## About the Project
 
