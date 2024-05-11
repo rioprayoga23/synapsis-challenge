@@ -33,8 +33,10 @@ Below is the tech stack used in building this project.
 ### Performance
 lighthouse score includes Derformace score and SEO
 
-![](https://imagetolink.com/ib/9vXwL1KiO9.png)
 ![](https://imagetolink.com/ib/Oa9Cm13Rt0.png)
+
+![](https://imagetolink.com/ib/9vXwL1KiO9.png)
+
 ![](https://imagetolink.com/ib/7MBAmxsxq1.png)
 
 
