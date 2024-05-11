@@ -2,9 +2,13 @@ import Author from "@/components/shared/Author";
 import CardPost from "@/components/shared/CardPost";
 import Comment from "@/components/shared/Comment";
 import CImage from "@/components/shared/Image";
+import { metaDataPostDetail } from "@/constants";
 import getCommentById from "@/services/comments/api";
 import { getAllPosts, getPostById } from "@/services/posts/api";
 import { getUserById } from "@/services/users/api";
+import { store } from "@/store";
+import { setMetaData } from "@/store/meta/action";
+import { title } from "process";
 
 const PostDetailPage = ({
   postData,
@@ -64,34 +68,72 @@ const PostDetailPage = ({
 
 export default PostDetailPage;
 
-export const getServerSideProps = async ({
-  params,
-}: {
-  params: { slug: string };
-}) => {
-  //* get post data by id
-  //* get 3 latest post data
+export const getServerSideProps = store.getServerSideProps(
+  (wrapper: any) =>
+    async ({ params }: any): Promise<any> => {
+      //* get post data by id
+      //* get 3 latest post data
+      const [postData, latestPosts] = await Promise.all([
+        getPostById(params?.slug),
+        getAllPosts({ params: { page: 1, per_page: 3 } }),
+      ]);
 
-  const [postData, latestPosts] = await Promise.all([
-    getPostById(params?.slug),
-    getAllPosts({ params: { page: 1, per_page: 3 } }),
-  ]);
+      //* check if post data is not found
+      if (!postData) return { notFound: true };
 
-  //* check if post data is not found
-  if (!postData) return { notFound: true };
+      //* get user data by user id
+      const userData = await getUserById(postData.user_id?.toString());
 
-  //* get user data by user id
-  const userData = await getUserById(postData.user_id?.toString());
+      //* get comment data by post id
+      const commentsData = await getCommentById(postData.id?.toString());
 
-  //* get comment data by post id
-  const commentsData = await getCommentById(postData.id?.toString());
+      wrapper.dispatch(
+        setMetaData({
+          ...metaDataPostDetail,
+          title: postData?.title,
+          canonical: `https://rio-synapsis-challenge.vercel.app/posts/${params?.slug}`,
+        })
+      );
 
-  return {
-    props: {
-      postData,
-      latestPostsData: latestPosts?.data ?? [],
-      userData: userData ?? {},
-      commentsData: commentsData ?? [],
-    },
-  };
-};
+      return {
+        props: {
+          postData,
+          latestPostsData: latestPosts?.data ?? [],
+          userData: userData ?? {},
+          commentsData: commentsData ?? [],
+        },
+      };
+    }
+);
+
+// export const getServerSideProps = async ({
+//   params,
+// }: {
+//   params: { slug: string };
+// }) => {
+//   //* get post data by id
+//   //* get 3 latest post data
+
+//   const [postData, latestPosts] = await Promise.all([
+//     getPostById(params?.slug),
+//     getAllPosts({ params: { page: 1, per_page: 3 } }),
+//   ]);
+
+//   //* check if post data is not found
+//   if (!postData) return { notFound: true };
+
+//   //* get user data by user id
+//   const userData = await getUserById(postData.user_id?.toString());
+
+//   //* get comment data by post id
+//   const commentsData = await getCommentById(postData.id?.toString());
+
+//   return {
+//     props: {
+//       postData,
+//       latestPostsData: latestPosts?.data ?? [],
+//       userData: userData ?? {},
+//       commentsData: commentsData ?? [],
+//     },
+//   };
+// };

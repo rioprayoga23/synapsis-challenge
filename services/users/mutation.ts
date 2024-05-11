@@ -16,8 +16,6 @@ export const useCreateUser = () => {
 
     onSettled: (_, error) => {
       if (error) {
-        console.log(error);
-
         return dispatch(setScreenLoading(false));
       }
 

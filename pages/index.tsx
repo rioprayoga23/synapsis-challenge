@@ -1,7 +1,10 @@
 import CardPost from "@/components/shared/CardPost";
 import Hero from "@/components/shared/Hero";
 import SkeletonCardPost from "@/components/shared/SkeletonCardPost";
+import { metaDataHome } from "@/constants";
 import { useAllPosts } from "@/services/posts/queries";
+import { store } from "@/store";
+import { setMetaData } from "@/store/meta/action";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -54,3 +57,9 @@ const PostsPage = () => {
 };
 
 export default PostsPage;
+
+export const getServerSideProps = store.getServerSideProps(
+  (wrapper: any) => async (): Promise<any> => {
+    await wrapper.dispatch(setMetaData(metaDataHome));
+  }
+);

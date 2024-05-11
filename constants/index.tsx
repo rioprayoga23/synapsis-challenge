@@ -1,3 +1,4 @@
+import { configs } from "@/configs";
 import {
   CheckCircleIcon,
   EditIcon,
@@ -97,4 +98,29 @@ export const ModalTitle = (modalAction: string) => {
     case "delete":
       return "Delete User";
   }
+};
+
+export const metaDataHome = {
+  title:
+    "Become the number one Internet of Things solution provider company. | Synapsis.id",
+  canonical: "https://rio-synapsis-challenge.vercel.app/",
+  description:
+    "PT. Synapsis Sinergi Digital, is a company that working on system prototyping especially Internet of Things systems and devices.",
+  ogImage: "",
+};
+
+export const metaDataUsers = {
+  title: "Users | Synapsis.id",
+  canonical: "https://rio-synapsis-challenge.vercel.app/users",
+  description:
+    "PT. Synapsis Sinergi Digital, is a company that working on system prototyping especially Internet of Things systems and devices.",
+  ogImage: "",
+};
+
+export const metaDataPostDetail = {
+  title: "",
+  canonical: "",
+  description:
+    "PT. Synapsis Sinergi Digital, is a company that working on system prototyping especially Internet of Things systems and devices.",
+  ogImage: "https://imagetolink.com/ib/bnYKYi44LJ.jpg",
 };

@@ -14,6 +14,9 @@ import Sticky from "react-sticky-el";
 import { useDebounce } from "use-debounce";
 import { useDispatch } from "react-redux";
 import { setModal } from "@/store/modal/action";
+import { setMetaData } from "@/store/meta/action";
+import { metaDataUsers } from "@/constants";
+import { store } from "@/store";
 
 const UsersPage = () => {
   const dispatch = useDispatch();
@@ -102,3 +105,9 @@ const UsersPage = () => {
 };
 
 export default UsersPage;
+
+export const getServerSideProps = store.getServerSideProps(
+  (wrapper: any) => async (): Promise<any> => {
+    await wrapper.dispatch(setMetaData(metaDataUsers));
+  }
+);
