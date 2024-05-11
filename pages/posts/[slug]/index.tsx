@@ -1,26 +1,28 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
 
 import Author from "@/components/shared/Author";
 import CardPost from "@/components/shared/CardPost";
 import Comment from "@/components/shared/Comment";
+import getCommentById from "@/services/comments/api";
+import { getAllPosts, getPostById } from "@/services/posts/api";
+import { getUserById } from "@/services/users/api";
 
-const PostDetailPage = () => {
-  const { query } = useRouter();
-
+const PostDetailPage = ({
+  postData,
+  userData,
+  latestPostsData,
+  commentsData,
+}: PostDetailPageProps) => {
   return (
     <div className="container">
       {/* header */}
       <div className="post-header">
         <div className="col-span-2">
           {/* Title */}
-          <h1>
-            Stips abundans verbera vito volutabrum thesaurus cursus quae
-            tamquam.
-          </h1>
+          <h1>{postData?.title}</h1>
 
           {/* Author */}
-          <Author />
+          <Author name={userData?.name || "Unknown"} />
         </div>
       </div>
 
@@ -34,38 +36,62 @@ const PostDetailPage = () => {
               className="rounded-xl"
               alt="asd"
               fill
-              priority
               sizes="(min-width: 808px) 50vw, 100vw"
               style={{ objectFit: "cover" }}
+              priority
             />
           </div>
 
           {/* description */}
-          <p className="description">
-            Tamen amplus spero. Bene via dolore. Uredo xiphias certus.
-            Thalassinus vel speculum. Tantillus defigo incidunt. Sed cervus
-            creo. Voluntarius crapula umerus. Apparatus thermae ager. Thesaurus
-            voluptates argumentum. Cum talio curvo. Absconditus spero voluptas.
-            Error volaticus conitor. Adsidue vulgivagus tremo. Cursim coepi
-            demoror. Odio cunabula vir. Verecundia terror bonus. Verbum
-            curiositas creta. Balbus dolore spes. Appositus arma amor.
-          </p>
+          <p className="description">{postData?.body}</p>
         </div>
 
         <aside>
           <h2 className="latest-title">Latest Posts</h2>
           <div className="wrap-latest-post">
-            {Array.from({ length: 3 }).map((_, index) => (
-              <CardPost column key={index} />
-            ))}
+            {latestPostsData?.length > 0 &&
+              latestPostsData?.map((item, index) => (
+                <CardPost data={item} column key={index} />
+              ))}
           </div>
         </aside>
       </article>
 
       {/* comment */}
-      <Comment />
+      <Comment data={commentsData} />
     </div>
   );
 };
 
 export default PostDetailPage;
+
+export const getServerSideProps = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  //* get post data by id
+  //* get 3 latest post data
+  const [postData, latestPosts] = await Promise.all([
+    getPostById(params?.slug),
+    getAllPosts({ params: { page: 1, per_page: 3 } }),
+  ]);
+
+  //* check if post data is not found
+  if (!postData) return { notFound: true };
+
+  //* get user data by user id
+  const userData = await getUserById(postData.user_id?.toString());
+
+  //* get comment data by post id
+  const commentsData = await getCommentById(postData.id?.toString());
+
+  return {
+    props: {
+      postData,
+      latestPostsData: latestPosts?.data ?? [],
+      userData: userData ?? {},
+      commentsData: commentsData ?? [],
+    },
+  };
+};

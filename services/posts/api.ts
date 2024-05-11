@@ -1,10 +1,23 @@
 import { getData } from "@/lib/https";
 
-export const getPosts = async (pageParam: number) => {
+export const getAllPosts = async ({
+  pageParam,
+  params,
+}: {
+  pageParam?: number;
+  params?: {};
+}) => {
   try {
-    const response = await getData("/posts", { page: pageParam + 1 });
-    return response;
-  } catch (error) {
-    throw error;
-  }
+    return await getData(
+      "/posts",
+      pageParam ? { page: pageParam + 1 } : { ...params }
+    );
+  } catch (error) {}
+};
+
+export const getPostById = async (id: string) => {
+  try {
+    const { data } = await getData(`/posts/${id}`);
+    return data;
+  } catch (error) {}
 };

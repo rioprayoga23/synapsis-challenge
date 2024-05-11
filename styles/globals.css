@@ -111,7 +111,7 @@
 }
 
 .card-post {
-  @apply rounded-2xl border p-4 cursor-pointer;
+  @apply rounded-2xl border p-4 cursor-pointer h-full;
 }
 
 .hover-active {
@@ -240,4 +240,8 @@ aside {
 
 .btn-add {
   @apply md:hidden rounded-[7px] gap-1;
+}
+
+.no-comments {
+  @apply bg-card p-5 mt-10 text-center font-semibold text-lg;
 }

@@ -1,12 +1,12 @@
 import CardPost from "@/components/shared/CardPost";
 import Hero from "@/components/shared/Hero";
 import SkeletonCardPost from "@/components/shared/SkeletonCardPost";
-import { usePosts } from "@/services/posts/queries";
+import { useAllPosts } from "@/services/posts/queries";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 const PostsPage = () => {
-  const postsQuery = usePosts();
+  const postsQuery = useAllPosts();
 
   const [ref, inView] = useInView({
     threshold: 1,

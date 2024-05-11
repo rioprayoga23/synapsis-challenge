@@ -4,7 +4,9 @@ declare type HeroProps = {
 };
 
 declare type ProfileProps = {
+  name: string;
   comment?: boolean;
+  commentBody?: string;
 };
 
 declare type InfoItemProps = {
@@ -32,7 +34,7 @@ declare type FormSchema = {
 
 declare type Posts = {
   id: number;
-  userId: number;
+  user_id: number;
   title: string;
   body: string;
 };
@@ -41,4 +43,27 @@ declare type CardPostProps = {
   data?: Posts;
   column?: boolean;
   refCard?: any;
+};
+
+declare type Users = {
+  id: number;
+  name: string;
+  email: string;
+  gender: string;
+  status: string;
+};
+
+declare type Comments = {
+  id: number;
+  post_id: number;
+  name: string;
+  email: string;
+  body: string;
+};
+
+declare type PostDetailPageProps = {
+  postData: Posts;
+  latestPostsData: Posts[];
+  userData: Users;
+  commentsData: Comments[];
 };

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const CardPost = ({ data, column = false, refCard }: CardPostProps) => {
   return (
-    <Link href={`/posts/${"a"}`} ref={refCard}>
+    <Link href={`/posts/${data?.id}`} ref={refCard}>
       <div
         className={`card card-post hover-active ${
           !column ? "scale-animation" : "lg:flex gap-2 hover:border-primary"
@@ -12,7 +12,7 @@ const CardPost = ({ data, column = false, refCard }: CardPostProps) => {
         {/* thumbnail */}
         <div
           className={`card-thumbnail relative ${
-            column && "flex-shrink-0 lg:w-[45%] xl:w-[40%] !h-[132px]"
+            column && "flex-shrink-0 lg:w-[45%] xl:w-[35%] !h-[105px]"
           }`}
         >
           <Image

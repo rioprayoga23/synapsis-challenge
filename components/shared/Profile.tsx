@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const Profile = ({ comment }: ProfileProps) => {
+const Profile = ({ comment, name, commentBody }: ProfileProps) => {
   return (
     <div
       className={`flex ${
@@ -24,15 +24,8 @@ const Profile = ({ comment }: ProfileProps) => {
       </div>
 
       <div>
-        <h2 className="text-sm md:text-lg font-medium">John Doe</h2>
-        {comment && (
-          <p className="text-gray-300">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio
-            consequatur provident doloremque ullam consequuntur mollitia sequi
-            inventore. At beatae aut modi qui? Labore aperiam odio quaerat
-            consectetur animi inventore ullam.
-          </p>
-        )}
+        <h2 className="text-sm md:text-lg font-medium">{name}</h2>
+        {comment && <p className="text-gray-300">{commentBody}</p>}
       </div>
     </div>
   );
