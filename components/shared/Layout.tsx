@@ -1,13 +1,12 @@
 import { IRootState } from "@/store";
-import React from "react";
-// import { Toaster } from "react-hot-toast";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
+import NextNProgress from "nextjs-progressbar";
+import React from "react";
 import { useSelector } from "react-redux";
 import DrawerModal from "./Drawer";
 import LoadingScreen from "./LoadingScreen";
 import Navbar from "./Navbar";
-import Head from "next/head";
 
 const Toaster = dynamic(
   () => import("react-hot-toast").then((c) => c.Toaster),
@@ -49,6 +48,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {isLoading && <LoadingScreen />}
 
       <Navbar />
+      <NextNProgress
+        options={{ showSpinner: false }}
+        color="green"
+        height={3}
+      />
+
       <main>{children}</main>
 
       <DrawerModal />
