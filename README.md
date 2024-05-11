@@ -9,7 +9,7 @@
   - [Installation](#installation)
 
 ## Live Preview
-![https://rio-synapsis-challenge.vercel.app/](https://rio-synapsis-challenge.vercel.app/) 
+[https://rio-synapsis-challenge.vercel.app/](https://rio-synapsis-challenge.vercel.app/)
 
 ## About the Project
 
