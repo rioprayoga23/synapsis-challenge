@@ -44,4 +44,9 @@ Provide instructions on setting up and using your project.
 
 1. Clone this repository:
 ```sh
-git clone https://github.com/your-username/your-repo.git
+https://github.com/rioprayoga23/synapsis-challenge.git
+
+2. Navigate to the project directory:
+cd synapsis-challenge
+
+
