@@ -54,12 +54,14 @@ cd synapsis-challenge
 ```
 npm install
 ```
+4. Create file .env.local
+
 4. Set environment variables:
 ```
 NEXT_PUBLIC_BASE_URL_API=https://gorest.co.in/public/v2/
-NEXT_PUBLIC_ACCESS_TOKEN=9ac908ec212bc46dda1db8f14a68fb88f67a7990aba2d53c4e97060402709f74
+NEXT_PUBLIC_ACCESS_TOKEN={YOURS_TOKEN} or 9ac908ec212bc46dda1db8f14a68fb88f67a7990aba2d53c4e97060402709f74
 ```
-5. Run programm
+6. Run programm
 ```
 npm run build && npm run start
 ```
