@@ -3,10 +3,24 @@ import Link from "next/link";
 
 import ButtonAction from "@/components/shared/ButtonAction";
 import InfoItem from "@/components/shared/InfoItem";
+import { useDeleteUser } from "@/services/users/mutation";
+import { useDispatch } from "react-redux";
+import { setModal } from "@/store/modal/action";
 
-const CardUser = () => {
+const CardUser = ({ data, refCard }: { data: Users; refCard: any }) => {
+  const deleteUserMutation = useDeleteUser();
+  const dispatch = useDispatch();
+
+  const onDeleteAction = () => {
+    deleteUserMutation.mutate(data?.id?.toString());
+  };
+
+  const onEditAction = () => {
+    dispatch(setModal({ modalAction: "edit", data }));
+  };
+
   return (
-    <div className="card-users">
+    <div className="card-users" ref={refCard}>
       {/* avatar image */}
       <div className="avatar flex-shrink-0">
         <Image
@@ -21,30 +35,22 @@ const CardUser = () => {
       {/* user information */}
       <div className="content-users">
         <div>
-          <h3 className="users-name">Gudakesa Mehrotra JD</h3>
+          <h3 className="users-name">{data?.name}</h3>
           <div className="flex flex-col items-center text-center sm:items-start sm:text-start mt-1">
             <Link href="mailto:someone@example.com" target="_blank">
-              <InfoItem
-                type={"email"}
-                title="jd_gudakesa_mehrotra@huels-sanford.example"
-              />
+              <InfoItem type={"email"} title={data?.email} />
             </Link>
 
-            <InfoItem type={"gender"} title="Female" />
-            <InfoItem type={"status"} title="Active" />
+            <InfoItem type={"gender"} title={data?.gender} />
+            <InfoItem type={"status"} title={data?.status} />
           </div>
         </div>
 
         <div className="user-actions">
-          <ButtonAction action="edit" />
-          <ButtonAction action="delete" />
+          <ButtonAction handleAction={onEditAction} action="edit" />
+          <ButtonAction handleAction={onDeleteAction} action="delete" />
         </div>
       </div>
-
-      {/* <div className="user-actions-small">
-        <ButtonAction action="edit" />
-        <ButtonAction action="delete" />
-      </div> */}
     </div>
   );
 };

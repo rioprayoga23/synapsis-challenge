@@ -1,16 +1,20 @@
-import { CLEAR_POSTS_DATA, SET_POSTS_DATA } from "./constants";
+import { CLEAR_MODAL, SET_MODAL } from "./constants";
 
 const initialState = {
-  data: [],
+  isOpen: false,
+  modalAction: "",
+  data: {},
 };
 
 export default function reducer(state = initialState, action: any) {
   switch (action.type) {
-    case SET_POSTS_DATA:
+    case SET_MODAL:
       return {
+        isOpen: true,
+        modalAction: action.modalAction,
         data: action.data,
       };
-    case CLEAR_POSTS_DATA:
+    case CLEAR_MODAL:
       return {
         ...initialState,
       };

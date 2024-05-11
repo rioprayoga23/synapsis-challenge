@@ -1,8 +1,11 @@
-import { CustomField } from "@/components/shared/CustomField";
-import { Form } from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 import ButtonAction from "@/components/shared/ButtonAction";
+import { CustomField } from "@/components/shared/CustomField";
+import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -11,9 +14,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 import { Gender, Status } from "@/constants";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { useCreateUser, useUpdateUser } from "@/services/users/mutation";
+import { useDispatch, useSelector } from "react-redux";
+import { IRootState } from "@/store";
+import { clearModal } from "@/store/modal/action";
 
 export const formSchema = z.object({
   name: z.string(),
@@ -23,20 +29,63 @@ export const formSchema = z.object({
 });
 
 const FormUsers = () => {
+  const { data, modalAction, isOpen } = useSelector(
+    (state: IRootState) => state.modal
+  );
+
+  const userCreateMutation = useCreateUser();
+  const userUpdateMutation = useUpdateUser();
+  const dispatch = useDispatch();
+
+  const initialValues = {
+    name: data?.name || "",
+    email: data?.email || "",
+    gender: data?.gender || "",
+    status: data?.status || "",
+  };
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    // defaultValues: initialValues,
+    defaultValues: initialValues,
   });
+
+  const onSubmitAction = async (values: z.infer<typeof formSchema>) => {
+    const payload = {
+      name: values.name,
+      email: values.email,
+      gender: values.gender,
+      status: values.status,
+    };
+
+    if (modalAction === "add" || !isOpen) {
+      userCreateMutation.mutate(payload);
+    } else {
+      userUpdateMutation.mutate({ id: data?.id, ...payload });
+      dispatch(clearModal());
+    }
+
+    form.reset();
+  };
 
   return (
     <Form {...form}>
-      <form action="" className="flex flex-col gap-3">
+      <form
+        onSubmit={form.handleSubmit(onSubmitAction)}
+        className="flex flex-col gap-3"
+      >
         <CustomField
           control={form.control}
           name="name"
           formLabel="Name"
           className="w-full"
-          render={({ field }) => <Input {...field} className="input-field" />}
+          render={({ field }) => (
+            <Input
+              value={field.value}
+              className="input-field"
+              placeholder="Input Name"
+              onChange={(e) => field.onChange(e.target.value)}
+            />
+          )}
         />
 
         <CustomField
@@ -44,7 +93,14 @@ const FormUsers = () => {
           name="email"
           formLabel="Email"
           className="w-full"
-          render={({ field }) => <Input {...field} className="input-field" />}
+          render={({ field }) => (
+            <Input
+              className="input-field"
+              value={field.value}
+              placeholder="Input Email"
+              onChange={(e) => field.onChange(e.target.value)}
+            />
+          )}
         />
 
         <CustomField
@@ -54,10 +110,7 @@ const FormUsers = () => {
           className="w-full"
           render={({ field }) => (
             <Select
-              onValueChange={(value) =>
-                // onSelectFieldHandler(value, field.onChange)
-                null
-              }
+              onValueChange={(value) => field.onChange(value)}
               value={field.value}
             >
               <SelectTrigger className="select-field">
@@ -80,15 +133,12 @@ const FormUsers = () => {
 
         <CustomField
           control={form.control}
-          name="gender"
+          name="status"
           formLabel="Status"
           className="w-full"
           render={({ field }) => (
             <Select
-              onValueChange={(value) =>
-                // onSelectFieldHandler(value, field.onChange)
-                null
-              }
+              onValueChange={(value) => field.onChange(value)}
               value={field.value}
             >
               <SelectTrigger className="select-field">

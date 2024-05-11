@@ -18,3 +18,19 @@ export async function getData(url: string, params?: {} | undefined) {
     params,
   });
 }
+
+export async function postData(url: string, params: any) {
+  return await axiosInstance.post(url, {
+    ...params,
+  });
+}
+
+export async function updateData(url: string, params: any) {
+  return await axiosInstance.put(url, {
+    ...params,
+  });
+}
+
+export async function deleteData(url: string) {
+  return await axiosInstance.delete(url);
+}

@@ -1,44 +1,79 @@
-import * as React from "react";
 import { useMediaQuery } from "react-responsive";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 import {
   Drawer,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { useEffect, useState } from "react";
 import FormUsers from "./FormUsers";
-import ButtonAction from "./ButtonAction";
+import { useDispatch, useSelector } from "react-redux";
+import { IRootState } from "@/store";
+import { clearModal } from "@/store/modal/action";
 
-const DrawerMobile = ({ children }: { children: React.ReactNode }) => {
-  const [open, setOpen] = React.useState(false);
+const DrawerModal = ({ children }: { children: React.ReactNode }) => {
+  const { isOpen, modalAction, data } = useSelector(
+    (state: IRootState) => state.modal
+  );
 
-  const isMediumToLarge = useMediaQuery({ query: "(min-width: 768px)" });
+  const dispatch = useDispatch();
+  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
 
-  React.useEffect(() => {
-    if (isMediumToLarge) {
-      setOpen(false);
+  useEffect(() => {
+    if (isDesktop && modalAction === "add") {
+      dispatch(clearModal());
     }
-  }, [isMediumToLarge]);
+  }, [isDesktop]);
+
+  const onChangeModal = (open: boolean) => {
+    if (!open) return dispatch(clearModal());
+  };
+
+  const title = modalAction === "add" ? "Add Users" : "Edit Users";
+
+  if (isDesktop) {
+    return (
+      <Dialog open={isOpen} onOpenChange={onChangeModal}>
+        <DialogTrigger asChild>
+          <DrawerTrigger asChild>{children}</DrawerTrigger>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>{title}</DialogTitle>
+          </DialogHeader>
+
+          {/* content */}
+          <FormUsers />
+        </DialogContent>
+      </Dialog>
+    );
+  }
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>{children}</DrawerTrigger>
-      <DrawerContent>
-        <div className="mx-auto w-full max-w-sm">
-          <DrawerHeader>
-            <DrawerTitle>Add Users</DrawerTitle>
-          </DrawerHeader>
+    <Drawer open={isOpen} onOpenChange={onChangeModal}>
+      <DrawerTrigger asChild>
+        <DrawerTrigger asChild>{children}</DrawerTrigger>
+      </DrawerTrigger>
+      <DrawerContent className="container pb-10">
+        <DrawerHeader className="text-center">
+          <DrawerTitle>{title}</DrawerTitle>
+        </DrawerHeader>
 
-          <div className="container pb-5">
-            <FormUsers />
-          </div>
-        </div>
+        {/* content */}
+        <FormUsers />
       </DrawerContent>
     </Drawer>
   );
 };
 
-export default DrawerMobile;
+export default DrawerModal;

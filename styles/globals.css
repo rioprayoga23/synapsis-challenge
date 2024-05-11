@@ -115,7 +115,7 @@
 }
 
 .hover-active {
-  @apply md:hover:border-primary md:hover:shadow-2xl md:hover:shadow-secondary/90;
+  @apply lg:hover:border-primary lg:hover:shadow-2xl lg:hover:shadow-secondary/90;
 }
 
 .scale-animation {

@@ -15,6 +15,7 @@ declare type InfoItemProps = {
 };
 
 declare type ButtonActionProps = {
+  handleAction?: any;
   action: "edit" | "delete" | "add";
 };
 
@@ -66,4 +67,17 @@ declare type PostDetailPageProps = {
   latestPostsData: Posts[];
   userData: Users;
   commentsData: Comments[];
+};
+
+declare type UserPayload = {
+  id?: string;
+  name: string;
+  email: string;
+  gender: string;
+  status: string;
+};
+
+declare type ReduxSetModalProps = {
+  modalAction: "add" | "edit";
+  data?: any;
 };

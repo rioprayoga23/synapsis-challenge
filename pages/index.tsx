@@ -41,6 +41,7 @@ const PostsPage = () => {
             ))
           )}
 
+          {/* show skeleton when loading */}
           {(postsQuery.isFetching || postsQuery.isLoading) &&
             !postsQuery.isError &&
             Array.from({ length: 6 }).map((_, index) => (
