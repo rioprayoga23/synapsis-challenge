@@ -192,7 +192,7 @@ aside {
 }
 
 .latest-title {
-  @apply text-3xl font-semibold;
+  @apply text-2xl md:text-3xl font-semibold;
 }
 
 .wrap-latest-post {
