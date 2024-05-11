@@ -6,13 +6,15 @@ import InfoItem from "@/components/shared/InfoItem";
 import { useDeleteUser } from "@/services/users/mutation";
 import { useDispatch } from "react-redux";
 import { setModal } from "@/store/modal/action";
+import DrawerModal from "./Drawer";
 
 const CardUser = ({ data, refCard }: { data: Users; refCard: any }) => {
-  const deleteUserMutation = useDeleteUser();
   const dispatch = useDispatch();
 
   const onDeleteAction = () => {
-    deleteUserMutation.mutate(data?.id?.toString());
+    dispatch(setModal({ modalAction: "delete", data }));
+
+    // deleteUserMutation.mutate(data?.id?.toString());
   };
 
   const onEditAction = () => {

@@ -4,9 +4,11 @@ import { createWrapper } from "next-redux-wrapper";
 import { thunk } from "redux-thunk";
 
 import modal from "./modal/reducer";
+import screenLoading from "./screen-loading/reducer";
 
 const rootReducer = combineReducers({
   modal,
+  screenLoading,
 });
 
 const isProduction = configs.NODE_ENV === "production";

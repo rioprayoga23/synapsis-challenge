@@ -15,6 +15,7 @@ declare type InfoItemProps = {
 };
 
 declare type ButtonActionProps = {
+  disabled?: boolean;
   handleAction?: any;
   action: "edit" | "delete" | "add";
 };
@@ -78,6 +79,6 @@ declare type UserPayload = {
 };
 
 declare type ReduxSetModalProps = {
-  modalAction: "add" | "edit";
+  modalAction: "add" | "edit" | "delete";
   data?: any;
 };

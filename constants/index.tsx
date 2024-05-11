@@ -57,7 +57,7 @@ export const InfoIcon = ({ type }: InfoItemProps) => {
   }
 };
 
-export const ActionType = ({ action }: ButtonActionProps) => {
+export const actionType = ({ action }: ButtonActionProps) => {
   switch (action) {
     case "edit":
       return (
@@ -71,7 +71,7 @@ export const ActionType = ({ action }: ButtonActionProps) => {
       return (
         <>
           <Trash2 width={20} />
-          Hapus
+          Delete
         </>
       );
 
@@ -85,5 +85,16 @@ export const ActionType = ({ action }: ButtonActionProps) => {
 
     default:
       null;
+  }
+};
+
+export const ModalTitle = (modalAction: string) => {
+  switch (modalAction) {
+    case "add":
+      return "Add User";
+    case "edit":
+      return "Edit User";
+    case "delete":
+      return "Delete User";
   }
 };

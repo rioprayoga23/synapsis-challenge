@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { ActionType } from "@/constants";
+import { actionType } from "@/constants";
 
-const ButtonAction = ({ handleAction, action }: ButtonActionProps) => {
+const ButtonAction = ({
+  handleAction,
+  disabled,
+  action,
+}: ButtonActionProps) => {
   return (
     <Button
       type="submit"
@@ -10,8 +14,9 @@ const ButtonAction = ({ handleAction, action }: ButtonActionProps) => {
       }`}
       size={"sm"}
       onClick={handleAction}
+      disabled={disabled}
     >
-      {ActionType({ action })}
+      {actionType({ action })}
     </Button>
   );
 };

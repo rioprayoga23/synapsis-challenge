@@ -1,7 +1,7 @@
-import type { AppProps } from "next/app";
-import { Provider } from "react-redux";
 import { store } from "@/store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import type { AppProps } from "next/app";
+import { Provider } from "react-redux";
 
 import Layout from "@/components/shared/Layout";
 import "@/styles/globals.css";

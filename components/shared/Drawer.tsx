@@ -20,9 +20,11 @@ import FormUsers from "./FormUsers";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "@/store";
 import { clearModal } from "@/store/modal/action";
+import { ModalTitle } from "@/constants";
+import DeleteAlert from "./DeleteAlert";
 
-const DrawerModal = ({ children }: { children: React.ReactNode }) => {
-  const { isOpen, modalAction, data } = useSelector(
+const DrawerModal = () => {
+  const { isOpen, modalAction } = useSelector(
     (state: IRootState) => state.modal
   );
 
@@ -39,21 +41,23 @@ const DrawerModal = ({ children }: { children: React.ReactNode }) => {
     if (!open) return dispatch(clearModal());
   };
 
-  const title = modalAction === "add" ? "Add Users" : "Edit Users";
+  const Content = () =>
+    modalAction === "" ? null : modalAction === "delete" ? (
+      <DeleteAlert />
+    ) : (
+      <FormUsers />
+    );
 
   if (isDesktop) {
     return (
       <Dialog open={isOpen} onOpenChange={onChangeModal}>
-        <DialogTrigger asChild>
-          <DrawerTrigger asChild>{children}</DrawerTrigger>
-        </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>{title}</DialogTitle>
+            <DialogTitle>{ModalTitle(modalAction)}</DialogTitle>
           </DialogHeader>
 
           {/* content */}
-          <FormUsers />
+          <Content />
         </DialogContent>
       </Dialog>
     );
@@ -61,16 +65,13 @@ const DrawerModal = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Drawer open={isOpen} onOpenChange={onChangeModal}>
-      <DrawerTrigger asChild>
-        <DrawerTrigger asChild>{children}</DrawerTrigger>
-      </DrawerTrigger>
       <DrawerContent className="container pb-10">
         <DrawerHeader className="text-center">
-          <DrawerTitle>{title}</DrawerTitle>
+          <DrawerTitle>{ModalTitle(modalAction)}</DrawerTitle>
         </DrawerHeader>
 
         {/* content */}
-        <FormUsers />
+        <Content />
       </DrawerContent>
     </Drawer>
   );

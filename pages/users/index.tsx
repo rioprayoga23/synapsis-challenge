@@ -56,16 +56,10 @@ const UsersPage = () => {
             <div className="flex justify-between">
               <h2 className="header-title">Users List</h2>
 
-              <DrawerModal>
-                <Button
-                  size="sm"
-                  className="btn-add"
-                  onClick={handleClickButton}
-                >
-                  <PlusIcon />
-                  Add
-                </Button>
-              </DrawerModal>
+              <Button size="sm" className="btn-add" onClick={handleClickButton}>
+                <PlusIcon />
+                Add
+              </Button>
             </div>
 
             {/* search input */}

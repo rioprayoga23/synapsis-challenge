@@ -33,16 +33,18 @@ const FormUsers = () => {
     (state: IRootState) => state.modal
   );
 
-  const userCreateMutation = useCreateUser();
-  const userUpdateMutation = useUpdateUser();
-  const dispatch = useDispatch();
-
   const initialValues = {
     name: data?.name || "",
     email: data?.email || "",
     gender: data?.gender || "",
     status: data?.status || "",
   };
+
+  const [payload, setPayload] = useState<UserPayload>(initialValues);
+
+  const userCreateMutation = useCreateUser();
+  const userUpdateMutation = useUpdateUser();
+  const dispatch = useDispatch();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -61,10 +63,14 @@ const FormUsers = () => {
       userCreateMutation.mutate(payload);
     } else {
       userUpdateMutation.mutate({ id: data?.id, ...payload });
-      dispatch(clearModal());
     }
 
+    dispatch(clearModal());
     form.reset();
+  };
+
+  const handleChangedInput = (name: string, value: string) => {
+    setPayload({ ...payload, [name]: value });
   };
 
   return (
@@ -83,7 +89,10 @@ const FormUsers = () => {
               value={field.value}
               className="input-field"
               placeholder="Input Name"
-              onChange={(e) => field.onChange(e.target.value)}
+              onChange={(e) => {
+                handleChangedInput("name", e.target.value);
+                field.onChange(e.target.value);
+              }}
             />
           )}
         />
@@ -98,7 +107,10 @@ const FormUsers = () => {
               className="input-field"
               value={field.value}
               placeholder="Input Email"
-              onChange={(e) => field.onChange(e.target.value)}
+              onChange={(e) => {
+                handleChangedInput("email", e.target.value);
+                field.onChange(e.target.value);
+              }}
             />
           )}
         />
@@ -110,7 +122,10 @@ const FormUsers = () => {
           className="w-full"
           render={({ field }) => (
             <Select
-              onValueChange={(value) => field.onChange(value)}
+              onValueChange={(value) => {
+                handleChangedInput("gender", value);
+                field.onChange(value);
+              }}
               value={field.value}
             >
               <SelectTrigger className="select-field">
@@ -138,7 +153,10 @@ const FormUsers = () => {
           className="w-full"
           render={({ field }) => (
             <Select
-              onValueChange={(value) => field.onChange(value)}
+              onValueChange={(value) => {
+                handleChangedInput("status", value);
+                field.onChange(value);
+              }}
               value={field.value}
             >
               <SelectTrigger className="select-field">
@@ -160,7 +178,10 @@ const FormUsers = () => {
         />
 
         <div className="mt-5 w-full">
-          <ButtonAction action="add" />
+          <ButtonAction
+            disabled={Object.values(payload).some((item) => item === "")}
+            action="add"
+          />
         </div>
       </form>
     </Form>
