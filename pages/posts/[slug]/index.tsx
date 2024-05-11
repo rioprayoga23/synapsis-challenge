@@ -71,6 +71,7 @@ export const getServerSideProps = async ({
 }) => {
   //* get post data by id
   //* get 3 latest post data
+
   const [postData, latestPosts] = await Promise.all([
     getPostById(params?.slug),
     getAllPosts({ params: { page: 1, per_page: 3 } }),

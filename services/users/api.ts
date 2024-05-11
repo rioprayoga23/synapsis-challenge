@@ -1,8 +1,10 @@
 import { deleteData, getData, postData, updateData } from "@/lib/https";
 
 export const getUserById = async (id: string) => {
-  const { data } = await getData(`/users/${id}`);
-  return data;
+  try {
+    const { data } = await getData(`/users/${id}`);
+    return data;
+  } catch (error) {}
 };
 
 export const getAllUsers = async ({

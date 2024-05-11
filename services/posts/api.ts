@@ -14,6 +14,8 @@ export const getAllPosts = async ({
 };
 
 export const getPostById = async (id: string) => {
-  const { data } = await getData(`/posts/${id}`);
-  return data;
+  try {
+    const { data } = await getData(`/posts/${id}`);
+    return data;
+  } catch (error) {}
 };
