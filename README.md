@@ -16,7 +16,6 @@ as well as perform CRUD (Create, Read, Update, Delete), and search operations.
 
 
 ### Built With
-
 Below is the tech stack used in building this project.
 
 - [NextJS 14](https://nextjs.org/)
@@ -28,10 +27,14 @@ Below is the tech stack used in building this project.
 - [TanStack Query](https://react-query.tanstack.com/)
 - [React Hook Form](https://react-hook-form.com/)
 - [React Hot Toast](https://react-hot-toast.com/)
-- [Zod](https://github.com/colinhacks/zod)
+- [Zod](https://zod.dev/)
+
+### Gallery
+Here are some screenshots or images of the project:
+
+![](https://imagetolink.com/ib/BpYVXtS3bu.png)
 
 ## Getting Started
-
 Provide instructions on setting up and using your project.
 
 ### Installation
