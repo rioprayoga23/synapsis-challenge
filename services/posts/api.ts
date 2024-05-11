@@ -7,17 +7,13 @@ export const getAllPosts = async ({
   pageParam?: number;
   params?: {};
 }) => {
-  try {
-    return await getData(
-      "/posts",
-      pageParam ? { page: pageParam + 1 } : { ...params }
-    );
-  } catch (error) {}
+  return await getData(
+    "/posts",
+    pageParam ? { page: pageParam + 1 } : { ...params }
+  );
 };
 
 export const getPostById = async (id: string) => {
-  try {
-    const { data } = await getData(`/posts/${id}`);
-    return data;
-  } catch (error) {}
+  const { data } = await getData(`/posts/${id}`);
+  return data;
 };

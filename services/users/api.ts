@@ -1,10 +1,8 @@
 import { deleteData, getData, postData, updateData } from "@/lib/https";
 
 export const getUserById = async (id: string) => {
-  try {
-    const { data } = await getData(`/users/${id}`);
-    return data;
-  } catch (error) {}
+  const { data } = await getData(`/users/${id}`);
+  return data;
 };
 
 export const getAllUsers = async ({
@@ -14,21 +12,15 @@ export const getAllUsers = async ({
   pageParam?: number;
   params?: {};
 }) => {
-  try {
-    return await getData("/users", { page: pageParam + 1, ...params });
-  } catch (error) {}
+  return await getData("/users", { page: pageParam + 1, ...params });
 };
 
 export const deleteUser = async (id: string) => {
-  try {
-    return await deleteData(`/users/${id}`);
-  } catch (error) {}
+  return await deleteData(`/users/${id}`);
 };
 
 export const postUser = async (payload: UserPayload) => {
-  try {
-    return await postData(`/users`, { ...payload });
-  } catch (error) {}
+  return await postData(`/users`, { ...payload });
 };
 
 export const updateUser = async (payload: UserPayload) => {
@@ -39,7 +31,5 @@ export const updateUser = async (payload: UserPayload) => {
     status: payload?.status,
   };
 
-  try {
-    return await updateData(`/users/${payload?.id}`, _payload);
-  } catch (error) {}
+  return await updateData(`/users/${payload?.id}`, _payload);
 };

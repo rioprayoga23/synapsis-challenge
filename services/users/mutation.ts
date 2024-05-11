@@ -13,8 +13,13 @@ export const useCreateUser = () => {
     onMutate: () => {
       dispatch(setScreenLoading(true));
     },
+
     onSettled: (_, error) => {
-      if (error) return;
+      if (error) {
+        console.log(error);
+
+        return dispatch(setScreenLoading(false));
+      }
 
       dispatch(setScreenLoading(false));
       toast.success("User created successfully");
@@ -33,7 +38,9 @@ export const useDeleteUser = () => {
       dispatch(setScreenLoading(true));
     },
     onSettled: async (_, error) => {
-      if (error) return;
+      if (error) {
+        return dispatch(setScreenLoading(false));
+      }
 
       dispatch(setScreenLoading(false));
       toast.success("User deleted successfully");
@@ -52,7 +59,9 @@ export const useUpdateUser = () => {
       dispatch(setScreenLoading(true));
     },
     onSettled: async (_, error) => {
-      if (error) return;
+      if (error?.message) {
+        return dispatch(setScreenLoading(false));
+      }
 
       dispatch(setScreenLoading(false));
       toast.success("User updated successfully");

@@ -10,7 +10,9 @@ const Comment = ({ data }: { data: Comments[] }) => {
           <p>{`${data?.length} Comment`}</p>
         </div>
 
-        {data.length <= 0 && <div className="no-comments">No Comments Yet</div>}
+        {data?.length <= 0 && (
+          <div className="no-comments">No Comments Yet</div>
+        )}
 
         <div className="mt-8">
           {data?.map((item, index) => (
