@@ -9,6 +9,9 @@
   - [Installation](#installation)
 
 ## About the Project
+Live Preview: ![](https://rio-synapsis-challenge.vercel.app/) 
+
+## About the Project
 
 This project is one of the main prerequisites that must be fulfilled as part of the recruitment stage. 
 It is a blog application that allows users to browse a list of blogs, display details of each blog, 
