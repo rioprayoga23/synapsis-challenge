@@ -1,24 +1,4 @@
-<p align="center">
-  <img src="https://your-project-logo-url" alt="Project Logo" width="200" />
-</p>
-
-<h1 align="center">Project Name</h1>
-
-<p align="center">
-  <strong>Brief description of your project.</strong>
-</p>
-
-<p align="center">
-  <a href="LICENSE">
-    <img src="https://img.shields.io/github/license/your-username/your-repo.svg" alt="License" />
-  </a>
-  <a href="https://github.com/your-username/your-repo/issues">
-    <img src="https://img.shields.io/github/issues/your-username/your-repo.svg" alt="Issues" />
-  </a>
-  <a href="https://github.com/your-username/your-repo/pulls">
-    <img src="https://img.shields.io/github/issues-pr/your-username/your-repo.svg" alt="Pull requests" />
-  </a>
-</p>
+<h1 align="center">Synapsis.id Challenge</h1>
 
 ## Table of Contents
 
@@ -27,22 +7,28 @@
 - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Usage](#usage)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## About the Project
 
-Describe your project here. What does it do? Why did you build it? What problem does it solve? Keep it concise and clear.
+This project is one of the main prerequisites that must be fulfilled as part of the recruitment stage. 
+It is a blog application that allows users to browse a list of blogs, display details of each blog, 
+as well as perform CRUD (Create, Read, Update, Delete), and search operations.
+
 
 ### Built With
 
-List the major frameworks, libraries, and technologies used in your project.
+Below is the tech stack used in building this project.
 
-- Framework/library 1
-- Framework/library 2
-- ...
+- [NextJS 14](https://nextjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn](https://shadcn.com/)
+- [Redux](https://redux.js.org/)
+- [Axios](https://axios-http.com/)
+- [TanStack Query](https://react-query.tanstack.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [React Hot Toast](https://react-hot-toast.com/)
+- [Zod](https://github.com/colinhacks/zod)
 
 ## Getting Started
 
