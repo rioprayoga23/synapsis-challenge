@@ -43,10 +43,26 @@ Provide instructions on setting up and using your project.
 ### Installation
 
 1. Clone this repository:
-```sh
+```
 https://github.com/rioprayoga23/synapsis-challenge.git
-
+```
 2. Navigate to the project directory:
+```
 cd synapsis-challenge
+```
+3. Install dependencies:
+```
+npm install
+```
+4. Set environment variables:
+```
+NEXT_PUBLIC_BASE_URL_API=https://gorest.co.in/public/v2/
+NEXT_PUBLIC_ACCESS_TOKEN=9ac908ec212bc46dda1db8f14a68fb88f67a7990aba2d53c4e97060402709f74
+```
+5. Run programm
+```
+npm run build && npm run start
+```
+
 
 
