@@ -1,4 +1,5 @@
 <h1 align="center">Synapsis.id Challenge</h1>
+<h3 align="center">Front End Developer Challenge</h3>
 
 ## Table of Contents
 
