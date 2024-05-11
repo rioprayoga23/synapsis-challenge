@@ -8,8 +8,8 @@
 - [Getting Started](#getting-started)
   - [Installation](#installation)
 
-## About the Project
-Live Preview: ![](https://rio-synapsis-challenge.vercel.app/) 
+## Live Preview
+![https://rio-synapsis-challenge.vercel.app/](https://rio-synapsis-challenge.vercel.app/) 
 
 ## About the Project
 
