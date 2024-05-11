@@ -4,6 +4,7 @@
 
 - [About the Project](#about-the-project)
   - [Built With](#built-with)
+  - [Gallery](#gallery)
 - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Usage](#usage)
@@ -14,8 +15,8 @@ This project is one of the main prerequisites that must be fulfilled as part of 
 It is a blog application that allows users to browse a list of blogs, display details of each blog, 
 as well as perform CRUD (Create, Read, Update, Delete), and search operations.
 
-
 ### Built With
+
 Below is the tech stack used in building this project.
 
 - [NextJS 14](https://nextjs.org/)
@@ -30,15 +31,17 @@ Below is the tech stack used in building this project.
 - [Zod](https://zod.dev/)
 
 ### Gallery
+
 Here are some screenshots or images of the project:
 
-![](https://imagetolink.com/ib/phFAjmixPv.png)
+![Example Image](https://imagetolink.com/ib/BpYVXtS3bu.png)
 
 ## Getting Started
+
 Provide instructions on setting up and using your project.
 
 ### Installation
 
-1. Step one of installation.
+1. Clone this repository:
 ```sh
-npm install
+git clone https://github.com/your-username/your-repo.git
