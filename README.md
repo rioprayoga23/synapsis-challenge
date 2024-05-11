@@ -32,7 +32,7 @@ Below is the tech stack used in building this project.
 ### Gallery
 Here are some screenshots or images of the project:
 
-![](https://imagetolink.com/ib/BpYVXtS3bu.png)
+![](https://imagetolink.com/ib/phFAjmixPv.png)
 
 ## Getting Started
 Provide instructions on setting up and using your project.
