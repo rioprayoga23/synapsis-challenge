@@ -295,3 +295,20 @@ aside {
   );
   animation: waveEffect 1.4s infinite;
 }
+
+/* animation */
+[data-cue="slideInDown"],
+[data-cues="slideInDown"] > * {
+  opacity: 0;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -82,3 +82,8 @@ declare type ReduxSetModalProps = {
   modalAction: "add" | "edit" | "delete";
   data?: any;
 };
+
+declare type AnimationArgs = {
+  name: string;
+  delay: string;
+};

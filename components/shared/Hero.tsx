@@ -1,5 +1,4 @@
-import Image from "next/image";
-import React from "react";
+import { slideInDownAnimate } from "@/lib/utils";
 import CImage from "./Image";
 
 const Hero = ({ title, subtitle }: HeroProps) => {
@@ -19,8 +18,12 @@ const Hero = ({ title, subtitle }: HeroProps) => {
       />
       <div className="hero-overlay" />
       <div className="hero-content">
-        <h1 className="heading">{title}</h1>
-        <h2 className="subHeading">{subtitle}</h2>
+        <h1 className="heading" style={slideInDownAnimate("400ms")}>
+          {title}
+        </h1>
+        <h2 className="subHeading" style={slideInDownAnimate("750ms")}>
+          {subtitle}
+        </h2>
       </div>
     </div>
   );

@@ -46,7 +46,7 @@ const UsersPage = () => {
     <>
       <Hero
         title="Synapsis Enthusiast"
-        subtitle="Come on, become our member."
+        subtitle="Join the Synapsis Enthusiast Community Today!"
       />
 
       <div className="container py-10">
