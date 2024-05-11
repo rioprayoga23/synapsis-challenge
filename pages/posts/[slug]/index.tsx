@@ -1,8 +1,7 @@
-import Image from "next/image";
-
 import Author from "@/components/shared/Author";
 import CardPost from "@/components/shared/CardPost";
 import Comment from "@/components/shared/Comment";
+import CImage from "@/components/shared/Image";
 import getCommentById from "@/services/comments/api";
 import { getAllPosts, getPostById } from "@/services/posts/api";
 import { getUserById } from "@/services/users/api";
@@ -31,13 +30,13 @@ const PostDetailPage = ({
         <div className="post-content">
           {/* thumbnail */}
           <div className="thumbnail">
-            <Image
-              src="/images/hero.jpg"
+            <CImage
+              src="/images/posts.jpg"
               className="rounded-xl"
-              alt="asd"
-              fill
+              alt={postData?.title}
               sizes="(min-width: 808px) 50vw, 100vw"
               style={{ objectFit: "cover" }}
+              fill
               priority
             />
           </div>

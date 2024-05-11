@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CImage from "./Image";
 
 const CardPost = ({ data, column = false, refCard }: CardPostProps) => {
   return (
@@ -15,8 +16,8 @@ const CardPost = ({ data, column = false, refCard }: CardPostProps) => {
             column && "flex-shrink-0 lg:w-[45%] xl:w-[35%] !h-[105px]"
           }`}
         >
-          <Image
-            src="/images/hero.jpg"
+          <CImage
+            src="/images/posts.jpg"
             className="rounded-xl"
             alt="img"
             fill

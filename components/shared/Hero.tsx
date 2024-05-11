@@ -1,16 +1,15 @@
 import Image from "next/image";
 import React from "react";
+import CImage from "./Image";
 
 const Hero = ({ title, subtitle }: HeroProps) => {
   return (
     <div className="hero relative">
-      <Image
+      <CImage
         src="/images/hero.jpg"
         alt="asd"
         width={0}
         height={0}
-        fill
-        priority
         sizes="(min-width: 808px) 50vw, 100vw"
         style={{
           objectFit: "cover",
